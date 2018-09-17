@@ -8,7 +8,7 @@ namespace PetsShopApp.Core.Entity.Repositories
     public class PetsRepository : IPetsRepository
     {
         static int id = 1;
-        public List<Pets> _PetsList = new List<Pets>(); 
+         List<Pets> _PetsList = new List<Pets>(); 
 
         public Pets Create(Pets pet)
         {
@@ -25,7 +25,7 @@ namespace PetsShopApp.Core.Entity.Repositories
             } return null;
         }
 
-        public List<Pets> ReadAll()
+        public IEnumerable<Pets> ReadAll()
         {
             return _PetsList;
         }

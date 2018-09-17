@@ -11,7 +11,7 @@ namespace PetsShopApp.Core.DomainService.IPetsRepository
 
         Pets ReadID(int ID);
 
-        List<Pets> ReadAll();
+        IEnumerable<Pets> ReadAll();
 
         Pets UpdatePet(Pets petUpdate);
 
