@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using PetsShopApp.Core.ApplicationService.Implementation;
+using PetsShopApp.Core.ApplicationService.Services;
 using PetsShopApp.Core.DomainService.IPetsRepository;
 using PetsShopApp.Core.Entity;
 
@@ -12,18 +14,19 @@ namespace WebApplication1.Controllers
     [ApiController]
     public class PetsController : ControllerBase
     {
-        private readonly IPetsRepository _PetsRepository;
+        private readonly IPetsService IPetsService;
+       
 
-        public PetsController(IPetsRepository PetsRepository)
+        public PetsController(IPetsService _PetsService)
         {
-            _PetsRepository = PetsRepository;
+            IPetsService = _PetsService;
 
         }
         // GET api/IPetsRepository
         [HttpGet]
         public ActionResult<IEnumerable<Pets>> Get()
         {
-            return _PetsRepository.ReadAll();
+            return IPetsService.ReadAllPets();
         }
 
         // GET api/IPetsRepository/5

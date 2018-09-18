@@ -9,8 +9,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using PetsShopApp.Core.DomainService.IPetsRepository;
-using PetsShopApp.Core.Entity.Repositories;
+using PetsShopApp.Core.ApplicationService.Implementation;
+using PetsShopApp.Core.ApplicationService.Services;
 
 namespace WebApplication1
 {
@@ -26,7 +26,7 @@ namespace WebApplication1
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IPetsRepository, PetsRepository>();
+            services.AddScoped<IPetsService, PetsService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

@@ -12,9 +12,9 @@ using PetsShopApp.Core.ApplicationService.Implementation;
 
 namespace PetsShopRemastered
 {
-    public class Printer
+    public class Printer: IPrinter
     {
-        private IPetsService _PetsService;
+        readonly IPetsService _PetsService;
 
         public Printer(IPetsService PetsService)
         {
@@ -26,7 +26,7 @@ namespace PetsShopRemastered
         }
 
 
-        void MakeMenu()
+        public void MakeMenu()
         {
 
             Console.WriteLine("\n____1: Display all available pets \n____2: Delete a pet \n____3: Create a new pet \n____4: Search by type \n____5: Update a pet \n____6: Sort pets by price from lowest \n____7: Get 5 cheapest available pets");
@@ -35,7 +35,7 @@ namespace PetsShopRemastered
             switch (selection)
             {
                 case 1:
-                    ReadAllPets();
+                    PrintList(_PetsService.ReadAllPets());
                     MakeMenu();
                     break;
                 case 2:
@@ -61,7 +61,7 @@ namespace PetsShopRemastered
                     Console.WriteLine("Enter type to look for: ");
                     var search = Console.ReadLine();
                     var petsByType = _PetsService.SearchPetsByType(search);
-                    ReadAllPets(petsByType);
+                    
                     Console.ReadLine();
                     Console.Clear();
                     break;
@@ -70,7 +70,6 @@ namespace PetsShopRemastered
                 case 5:
                     var idEdit = PrintFindPetById();
                     var petEdit = _PetsService.SearchById(idEdit);
-                    Console.WriteLine("Name" +pet.Name);
 
                     var newName = Question("Name of Pet:");
                     var newColor = Question("Color:");
@@ -107,10 +106,7 @@ namespace PetsShopRemastered
 
         }
 
-        IEnumerable<Pets> ReadAllPets()
-        {
-            return PetsRepository.ReadAll();
-        }
+        
 
         string Question(string question) {
             Console.WriteLine(question);
@@ -145,15 +141,12 @@ namespace PetsShopRemastered
         
         }
 
-        Pets SavePet(Pets pet) {
-           return PetsRepository.Create(pet);
-
-        }
+       
 
         void UpdatePet()
         {
             var id = PrintFindPetById();
-            var pet = SearchById(id);
+            var pet = _PetsService.SearchById(id);
             Console.WriteLine("Name: ");
             pet.Name = Console.ReadLine();
             Console.WriteLine("Type: ");
@@ -200,128 +193,8 @@ namespace PetsShopRemastered
             }
             return id;
         }
-    
 
-
-
-        public Pets SearchById(int id)
-        {
-           
-            return PetsRepository.ReadID(id);
-        }
-
-
-
-        void InitData()
-        {
-            var pet1 = new Pets()
-            {
-                Name = "Artemis",
-                Color = "Blue",
-                Type = "Horse",
-                BirthDate = Convert.ToDateTime(2777 / 07 / 07),
-                Price = 22.22,
-                SoldDate = Convert.ToDateTime(1994 / 04 / 16),
-                PreviousOwner = "PlayerOne"
-
-
-
-            };
-            _PetsService.CreatePet(pet1);
-
-            var pet2 = new Pets()
-            {
-                Name = "Bronch",
-                Color = "Yellow",
-                Type = "Cat",
-                BirthDate = Convert.ToDateTime(1952 / 02 / 12),
-                Price = 22.22,
-                SoldDate = Convert.ToDateTime(1294 / 04 / 16),
-                PreviousOwner = "Nose"
-
-
-
-            };
-            _PetsService.CreatePet(pet2);
-
-            var pet3 = new Pets()
-            {
-                Name = "Salad",
-                Color = "Green",
-                Type = "Cat",
-                BirthDate = Convert.ToDateTime(1422 / 03 / 12),
-                Price = 22.22,
-                SoldDate = Convert.ToDateTime(1543 / 06 / 11),
-                PreviousOwner = "Earth"
-
-
-
-            };
-            _PetsService.CreatePet(pet3);
-
-            var pet4 = new Pets()
-            {
-                Name = "John",
-                Color = "Wicked",
-                Type = "Dog",
-                BirthDate = Convert.ToDateTime(1492 / 11 / 12),
-                Price = 22.22,
-                SoldDate = Convert.ToDateTime(1544 / 08 / 19),
-                PreviousOwner = "Mafia"
-
-
-
-            };
-            _PetsService.CreatePet(pet4);
-
-            var pet5 = new Pets()
-            {
-                Name = "TimeTravelel",
-                Color = "Black",
-                Type = "Horse",
-                BirthDate = Convert.ToDateTime(1992 / 03 / 12),
-                Price = 22.22,
-                SoldDate = Convert.ToDateTime(1204 / 06 / 12),
-                PreviousOwner = "Brosnki"
-
-
-
-            };
-            _PetsService.CreatePet(pet5);
-
-            var pet6 = new Pets()
-            {
-                Name = "Jonhu",
-                Color = "White",
-                Type = "Dog",
-                BirthDate = Convert.ToDateTime(1952 / 02 / 19),
-                Price = 15.22,
-                SoldDate = Convert.ToDateTime(1954 / 04 / 16),
-                PreviousOwner = "Jundo"
-
-
-
-            };
-            _PetsService.CreatePet(pet6);
-
-
-
-
-
-        }
-
-
-
-
-
-        void DeletePet()
-        {
-            var id = PrintFindPetById();
-            PetsRepository.DeletePet(id);
-
-        }
-
-
+      
     }
 }
 
