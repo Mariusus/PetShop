@@ -6,6 +6,7 @@ namespace PetsShopRemastered
 {
     public interface IPrinter
     {
+        
         void MakeMenu();
     }
 }

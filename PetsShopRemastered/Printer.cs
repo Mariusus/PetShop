@@ -35,6 +35,7 @@ namespace PetsShopRemastered
             switch (selection)
             {
                 case 1:
+                    
                     PrintList(_PetsService.ReadAllPets());
                     MakeMenu();
                     break;
@@ -47,9 +48,9 @@ namespace PetsShopRemastered
                     var name = Question("name: ");
                     var color = Question("color: ");
                     var type = Question("type: ");
-                    var birthdate = Question3("Birth Date: ");
+                    var birthdate = Question3("Birth Date (Format 7777/07/77): ");
                     var price = Question1("price: ");
-                    var solddate = Question3("Sold Date: ");
+                    var solddate = Question3("Sold Date (Format 7777/07/77): ");
                     var previousowner = Question("Previous Owner: ");
                     var pet = _PetsService.CreatePet(name, color, type, birthdate, price, solddate, previousowner);
                     _PetsService.SavePet(pet);
@@ -181,7 +182,7 @@ namespace PetsShopRemastered
             }
             Console.WriteLine("\n");
         }
-    
+        
 
         int PrintFindPetById()
         {
