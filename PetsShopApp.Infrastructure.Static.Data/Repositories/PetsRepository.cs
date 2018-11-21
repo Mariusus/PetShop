@@ -1,4 +1,5 @@
-﻿using PetsShopApp.Core.DomainService;
+﻿using PetShopRemastered.Infrastructure.Static.Data.Repositories;
+using PetsShopApp.Core.DomainService;
 using PetsShopApp.Core.DomainService.IPetsRepository;
 using System;
 using System.Collections.Generic;
@@ -8,8 +9,11 @@ namespace PetsShopApp.Core.Entity.Repositories
     public class PetsRepository : IPetsRepository
     {
         static int id = 1;
-         List<Pets> _PetsList = new List<Pets>(); 
+        List<Pets> _PetsList = FakeDB._PetsList;
 
+        public PetsRepository() {
+            FakeDB.InitData();
+        }
         public Pets Create(Pets pet)
         {
             pet.ID = id++;

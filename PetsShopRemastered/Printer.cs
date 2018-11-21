@@ -186,13 +186,13 @@ namespace PetsShopRemastered
 
         int PrintFindPetById()
         {
-            int id;
-            Console.WriteLine("Insert Id:");
-            while (!int.TryParse(Console.ReadLine(), out id))
-            {
-                Console.WriteLine("Insert valid Id");
-            }
-            return id;
+                int id;
+                Console.WriteLine("Insert Id:");
+                while (!int.TryParse(Console.ReadLine(), out id))
+                {
+                    Console.WriteLine("Insert valid Id");
+                }
+                return id;
         }
 
       

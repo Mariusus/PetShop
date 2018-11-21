@@ -5,7 +5,7 @@ using System.Text;
 
 namespace PetShopRemastered.Infrastructure.Static.Data.Repositories
 {
-    public static class FakeDb
+    public static class FakeDB
     {
         public static int PetID { get; set; }
         public static List<Pets> _PetsList = new List<Pets>();
@@ -19,9 +19,9 @@ namespace PetShopRemastered.Infrastructure.Static.Data.Repositories
                 Name = "Artemis",
                 Color = "Blue",
                 Type = "Horse",
-                BirthDate = Convert.ToDateTime(2777 / 07 / 07),
+                
                 Price = 22.22,
-                SoldDate = Convert.ToDateTime(1994 / 04 / 16),
+                
                 PreviousOwner = "PlayerOne"
 
 
@@ -35,9 +35,9 @@ namespace PetShopRemastered.Infrastructure.Static.Data.Repositories
                 Name = "Bronch",
                 Color = "Yellow",
                 Type = "Cat",
-                BirthDate = Convert.ToDateTime(1952 / 02 / 12),
+                
                 Price = 22.22,
-                SoldDate = Convert.ToDateTime(1294 / 04 / 16),
+             
                 PreviousOwner = "Nose"
 
 
@@ -51,9 +51,9 @@ namespace PetShopRemastered.Infrastructure.Static.Data.Repositories
                 Name = "Salad",
                 Color = "Green",
                 Type = "Cat",
-                BirthDate = Convert.ToDateTime(1422 / 03 / 12),
+               
                 Price = 22.22,
-                SoldDate = Convert.ToDateTime(1543 / 06 / 11),
+                
                 PreviousOwner = "Earth"
 
 
@@ -67,9 +67,9 @@ namespace PetShopRemastered.Infrastructure.Static.Data.Repositories
                 Name = "John",
                 Color = "Wicked",
                 Type = "Dog",
-                BirthDate = Convert.ToDateTime(1492 / 11 / 12),
+               
                 Price = 22.22,
-                SoldDate = Convert.ToDateTime(1544 / 08 / 19),
+               
                 PreviousOwner = "Mafia"
 
 
@@ -83,9 +83,9 @@ namespace PetShopRemastered.Infrastructure.Static.Data.Repositories
                 Name = "TimeTraveler",
                 Color = "Black",
                 Type = "Horse",
-                BirthDate = Convert.ToDateTime(1992 / 03 / 12),
+               
                 Price = 22.22,
-                SoldDate = Convert.ToDateTime(1204 / 06 / 12),
+   
                 PreviousOwner = "Brosnki"
 
 
@@ -99,9 +99,9 @@ namespace PetShopRemastered.Infrastructure.Static.Data.Repositories
                 Name = "Jonhu",
                 Color = "White",
                 Type = "Dog",
-                BirthDate = Convert.ToDateTime(1952 / 02 / 19),
+              
                 Price = 15.22,
-                SoldDate = Convert.ToDateTime(1954 / 04 / 16),
+          
                 PreviousOwner = "Jundo"
 
 

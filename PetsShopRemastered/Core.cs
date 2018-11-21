@@ -23,7 +23,7 @@ namespace PetsShopRemastered
 
             var serviceProvider = serviceCollection.BuildServiceProvider();
             var printer = serviceProvider.GetRequiredService<IPrinter>();
-            FakeDb.InitData();
+            FakeDB.InitData();
             printer.MakeMenu();
         }
     }
